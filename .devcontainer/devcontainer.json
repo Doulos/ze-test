@@ -1,0 +1,42 @@
+// Copyright (c) 2024 Doulos
+// SPDX-License-Identifier: Apache-2.0
+
+{
+    "name": "Doulos Zephyr Training",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "workspaceMount": "source=${localWorkspaceFolder}/labs,target=/zephyr-training/labs,type=bind",
+    "workspaceFolder": "/zephyr-training/labs",
+    "onCreateCommand": "bash -i /zephyr-training/labs/.provisioning/setup.sh",
+    "postStartCommand": "cd /zephyr-training/labs && west build -p -b native_sim 01_test -t run",
+
+    "customizations": {
+        "vscode": {
+	    "settings": {
+                "files.exclude": {
+	            ".provisioning/": true
+	        }
+	    },
+	    "extensions": [
+		    "ms-vscode.cpptools-extension-pack",
+		    "ms-python.python",
+		    "ms-vscode.vscode-embedded-tools",
+		    "ms-vscode.vscode-serial-monitor",
+		    "marus25.cortex-debug",
+		    "donjayamanne.python-environment-manager",
+		    "MS-vsliveshare.vsliveshare"
+	    ]
+        },
+	"codespaces": {
+            "repositories": {
+                "doulos/zep": {
+                    "permissions": {
+                        "contents": "read",
+                        "packages": "read"
+                     }
+                }
+            }
+        }
+    }
+}
