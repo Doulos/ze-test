@@ -30,7 +30,7 @@
         },
 	"codespaces": {
             "repositories": {
-                "doulos/zep": {
+                "Doulos/ze-test": {
                     "permissions": {
                         "contents": "read",
                         "packages": "read"
